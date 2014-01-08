@@ -1,0 +1,48 @@
+<idea-plugin version="2">
+	<id>io.nlopez.androidannotations.viewbyid</id>
+	<name>Android Annotations view injection code generator</name>
+	<version>1.0</version>
+	<vendor email="nacho@nlopez.io" url="http://nlopez.io">Nacho Lopez</vendor>
+
+	<description><![CDATA[
+      This plugin will generate automatically all the @ViewById annotations for an <a href="http://androidannotations.org">Android Annotations</a> annotated class.<br>
+      Just select your R.layout name in the class and access the <strong>Generate</strong> menu on the contextual options, and it will appear there.
+      ]]></description>
+
+	<change-notes><![CDATA[
+      First release!
+      ]]>
+	</change-notes>
+
+	<!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+	<idea-version since-build="107.105"/>
+
+	<!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+		   on how to target different products -->
+	<!-- uncomment to enable plugin in all products
+	  <depends>com.intellij.modules.lang</depends>
+	  -->
+
+	<application-components>
+		<!-- Add your application components here -->
+	</application-components>
+
+	<project-components>
+		<!-- Add your project components here -->
+	</project-components>
+
+	<actions>
+		<!-- Add your actions here -->
+		<action id="generateAndroidAnnotationsViewByIds"
+		        class="io.nlopez.androidannotations.viewbyid.GenerateViewByIds"
+		        text="Generate @ViewById entries"
+		        description="Generates all the @ViewById annotations of an existing layout">
+			<add-to-group group-id="GenerateGroup" anchor="last"/>
+			<keyboard-shortcut keymap="$default" first-keystroke="meta alt V"/>
+		</action>
+	</actions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<!-- Add your extensions here -->
+	</extensions>
+</idea-plugin>
