@@ -1,6 +1,6 @@
 <idea-plugin version="2">
 	<id>io.nlopez.androidannotations.viewbyid</id>
-	<name>Android Annotations view injection code generator</name>
+	<name>Android Annotations @ViewById injection code generator</name>
 	<version>1.0</version>
 	<vendor email="nacho@nlopez.io" url="http://nlopez.io">Nacho Lopez</vendor>
 
@@ -38,7 +38,7 @@
 		        text="Generate @ViewById entries"
 		        description="Generates all the @ViewById annotations of an existing layout">
 			<add-to-group group-id="GenerateGroup" anchor="last"/>
-			<keyboard-shortcut keymap="$default" first-keystroke="meta alt V"/>
+			<keyboard-shortcut keymap="$default" first-keystroke="meta control alt V"/>
 		</action>
 	</actions>
 

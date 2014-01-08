@@ -5,11 +5,11 @@ android-viewbyid-generator
 
 How to install
 --------------
-TODO send it to the official repository. 
+I am currently waiting to have this approved in the JetBrains Plugin Repository.
 
 Usage
 -----
 1. Select your `R.layout.layout_name` name in your @EActivity, @EFragment or @EViewGroup and right click it.
-2. Select `Generate / Generate @ViewById entries`.
+2. Select `Generate / Generate @ViewById entries` or press cmd+ctrl+option+v.
 3. Select the annotations you want to use, change their names, whatever you want.
 4. Confirm - and it is done :)
