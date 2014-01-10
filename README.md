@@ -1,7 +1,7 @@
 android-viewbyid-generator
 ==========================
 
-[Android Annotations](https://androidannotations.org) `@ViewById` annotation generator for Android Studio / IntelliJ IDEA, heavily based on the [ButterKnifeZelezny](https://github.com/inmite-android-butterknife-zelezny) plugin.
+[Android Annotations](http://androidannotations.org/) `@ViewById` annotation generator for Android Studio / IntelliJ IDEA, heavily based on the [ButterKnifeZelezny](https://github.com/inmite/android-butterknife-zelezny) plugin.
 
 How to install
 --------------
