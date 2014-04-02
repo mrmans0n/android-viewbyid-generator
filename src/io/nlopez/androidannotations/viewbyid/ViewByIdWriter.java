@@ -10,6 +10,9 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by mrm on 08/01/14.
@@ -23,6 +26,7 @@ public class ViewByIdWriter extends WriteCommandAction.Simple {
 	protected PsiElementFactory mFactory;
 	protected String mLayoutFileName;
 	protected String mFieldNamePrefix;
+	protected Map<String, String> mappings;
 
 	public ViewByIdWriter(PsiFile file, PsiClass clazz, String command, ArrayList<Element> elements, String layoutFileName, String fieldNamePrefix) {
 		super(clazz.getProject(), command);
@@ -34,6 +38,17 @@ public class ViewByIdWriter extends WriteCommandAction.Simple {
 		mFactory = JavaPsiFacade.getElementFactory(mProject);
 		mLayoutFileName = layoutFileName;
 		mFieldNamePrefix = fieldNamePrefix;
+		mappings = createMappings();
+	}
+
+	private Map<String, String> createMappings() {
+		HashMap<String, String> mapping = new HashMap<String, String>();
+		mapping.put("WebView", "android.webkit.WebView");
+		mapping.put("View", "android.view.View");
+		mapping.put("ViewStub", "android.view.ViewStub");
+		mapping.put("TextureView", "android.view.TextureView");
+		mapping.put("fragment", "android.app.Fragment");
+		return Collections.synchronizedMap(mapping);
 	}
 
 	@Override
@@ -62,7 +77,11 @@ public class ViewByIdWriter extends WriteCommandAction.Simple {
 			}
 
 			StringBuilder injection = new StringBuilder();
-			injection.append("@org.androidannotations.annotations.ViewById"); // annotation
+			if ("fragment".equals(element.name) || "android.support.v4.app.Fragment".equals(element.name)) {
+				injection.append("@org.androidannotations.annotations.FragmentById"); // annotation
+			} else {
+				injection.append("@org.androidannotations.annotations.ViewById"); // annotation
+			}
 			if (!element.isAndroidAnnotationsCompliantName()) {
 				injection.append("(");
 				injection.append(element.getFullID());
@@ -71,8 +90,8 @@ public class ViewByIdWriter extends WriteCommandAction.Simple {
 			injection.append(" ");
 			if (element.nameFull != null && element.nameFull.length() > 0) { // custom package+class
 				injection.append(element.nameFull);
-			} else if (element.name.equals("WebView")) { // listed class
-				injection.append("android.webkit.WebView");
+			} else if (mappings.containsKey(element.name)) { // listed class
+				injection.append(mappings.get(element.name));
 			} else { // android.widget
 				injection.append("android.widget.");
 				injection.append(element.name);

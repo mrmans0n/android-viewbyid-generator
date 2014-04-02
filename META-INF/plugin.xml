@@ -1,7 +1,7 @@
 <idea-plugin version="2">
 	<id>io.nlopez.androidannotations.viewbyid</id>
 	<name>Android Annotations @ViewById injection code generator</name>
-	<version>1.0</version>
+	<version>1.1</version>
 	<vendor email="nacho@nlopez.io" url="http://nlopez.io">Nacho Lopez</vendor>
 
 	<description><![CDATA[
@@ -10,7 +10,7 @@
       ]]></description>
 
 	<change-notes><![CDATA[
-      First release!
+      Fixed support to View, ViewStub and SurfaceView, and added Fragment support.
       ]]>
 	</change-notes>
 
