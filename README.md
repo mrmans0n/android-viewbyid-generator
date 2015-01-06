@@ -1,5 +1,6 @@
 android-viewbyid-generator
 ==========================
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--viewbyid--generator-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1323)
 
 [Android Annotations](http://androidannotations.org/) `@ViewById` annotation generator for Android Studio / IntelliJ IDEA, heavily based on the [ButterKnifeZelezny](https://github.com/inmite/android-butterknife-zelezny) plugin.
 
